@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Vocabulary
 {
-    public partial class StartForm : Form
+    public partial class SearchForm : Form
     {
-        public StartForm()
+        public SearchForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SearchForm form = new SearchForm();
-            form.ShowDialog();
         }
     }
 }
