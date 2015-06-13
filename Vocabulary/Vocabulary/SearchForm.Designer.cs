@@ -32,9 +32,10 @@
             this.lookForPages = new System.Windows.Forms.CheckBox();
             this.lookForWords = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchExpression = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.results = new System.Windows.Forms.ListBox();
+            this.beCaseSensitive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -80,12 +81,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Look for:";
             // 
-            // textBox1
+            // searchExpression
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 508);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(533, 20);
-            this.textBox1.TabIndex = 4;
+            this.searchExpression.Location = new System.Drawing.Point(12, 508);
+            this.searchExpression.Name = "searchExpression";
+            this.searchExpression.Size = new System.Drawing.Size(533, 20);
+            this.searchExpression.TabIndex = 4;
+            this.searchExpression.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -97,22 +99,34 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Search results";
             // 
-            // listBox1
+            // results
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 182);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(533, 316);
-            this.listBox1.TabIndex = 6;
+            this.results.FormattingEnabled = true;
+            this.results.Location = new System.Drawing.Point(12, 182);
+            this.results.Name = "results";
+            this.results.Size = new System.Drawing.Size(533, 316);
+            this.results.TabIndex = 6;
+            // 
+            // beCaseSensitive
+            // 
+            this.beCaseSensitive.AutoSize = true;
+            this.beCaseSensitive.Location = new System.Drawing.Point(156, 98);
+            this.beCaseSensitive.Name = "beCaseSensitive";
+            this.beCaseSensitive.Size = new System.Drawing.Size(94, 17);
+            this.beCaseSensitive.TabIndex = 7;
+            this.beCaseSensitive.Text = "Case-sensitive";
+            this.beCaseSensitive.UseVisualStyleBackColor = true;
+            this.beCaseSensitive.CheckedChanged += new System.EventHandler(this.beCaseSensitive_CheckedChanged);
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 540);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.beCaseSensitive);
+            this.Controls.Add(this.results);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchExpression);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lookForWords);
             this.Controls.Add(this.lookForPages);
@@ -130,8 +144,9 @@
         private System.Windows.Forms.CheckBox lookForPages;
         private System.Windows.Forms.CheckBox lookForWords;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchExpression;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox results;
+        private System.Windows.Forms.CheckBox beCaseSensitive;
     }
 }

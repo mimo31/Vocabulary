@@ -10,32 +10,33 @@ namespace Vocabulary
     {
 
         public string name{get; set;}
-        word[] words;
+        public Word[] words { get; private set; }
 
         public Page(string name)
         {
-            name = this.name;
+            this.name = name;
+            this.words = new Word[0];
         }
 
         public void addWord(string inCzech, string inEnglish, string comment)
         {
-            this.addWord(new word(new string[] { inCzech }, inEnglish, comment));
+            this.addWord(new Word(new string[] { inCzech }, inEnglish, comment));
         }
 
         public void addWord(string[] inCzech, string inEnglish, string comment)
         {
-            this.addWord(new word(inCzech , inEnglish, comment));
+            this.addWord(new Word(inCzech , inEnglish, comment));
         }
 
-        public void addWord(word word)
+        public void addWord(Word word)
         {
-            word[] temp = new word[words.Length];
+            Word[] temp = new Word[words.Length + 1];
             for (int i = 0; i < words.Length; i++)
             {
                 temp[i] = words[i];
             }
             temp[temp.Length - 1] = word;
-            words = temp;
+            this.words = temp;
         }
 
         public byte[] toBytes()
@@ -49,13 +50,13 @@ namespace Vocabulary
         }
     }
 
-    class word
+    class Word
     {
         public string[] inCzech{get; set;}
         public string inEnglish{get; set;}
         public string comment{get; set;}
 
-        public word(string[] inCzech, string inEnglish, string comment)
+        public Word(string[] inCzech, string inEnglish, string comment)
         {
             this.inCzech = inCzech;
             this.inEnglish = inEnglish;
