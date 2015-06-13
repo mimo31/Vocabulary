@@ -26,11 +26,29 @@ namespace Vocabulary
 
         public static void addPage(Page page)
         {
+            int pageListIndex;
+            {
+                int i = 0;
+                while (i < pages.Length)
+                {
+                    if (string.Compare(pages[i].name, page.name) > 0)
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                pageListIndex = i;
+            }
             Page[] temp = new Page[pages.Length + 1];
-            for(int i = 0; i < pages.Length; i++) {
+            for (int i = 0; i < pageListIndex; i++)
+            {
                 temp[i] = pages[i];
             }
-            temp[temp.Length - 1] = page;
+            temp[pageListIndex] = page;
+            for (int i = pageListIndex; i < pages.Length; i++)
+            {
+                temp[i + 1] = pages[i];
+            }
             pages = temp;
         }
     }

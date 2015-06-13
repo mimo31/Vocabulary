@@ -59,6 +59,7 @@
             this.lookForPages.TabIndex = 1;
             this.lookForPages.Text = "Pages";
             this.lookForPages.UseVisualStyleBackColor = true;
+            this.lookForPages.CheckedChanged += new System.EventHandler(this.lookForPages_CheckedChanged);
             // 
             // lookForWords
             // 
@@ -71,6 +72,7 @@
             this.lookForWords.TabIndex = 2;
             this.lookForWords.Text = "Words";
             this.lookForWords.UseVisualStyleBackColor = true;
+            this.lookForWords.CheckedChanged += new System.EventHandler(this.lookForWords_CheckedChanged);
             // 
             // label2
             // 

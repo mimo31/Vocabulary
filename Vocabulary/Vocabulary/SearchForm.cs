@@ -15,13 +15,15 @@ namespace Vocabulary
 
         ResultIndexInfo[] indexInfo = new ResultIndexInfo[0];
 
-        private class ResultIndexInfo{
+        private class ResultIndexInfo
+        {
 
-            Boolean isPage{get; set;}
-            int pageIndex{get; set;}
-            int wordIndex{get; set;}
+            Boolean isPage { get; set; }
+            int pageIndex { get; set; }
+            int wordIndex { get; set; }
 
-            public ResultIndexInfo(Boolean isPage, int pageIndex, int wordIndex){
+            public ResultIndexInfo(Boolean isPage, int pageIndex, int wordIndex)
+            {
                 this.isPage = isPage;
                 this.pageIndex = pageIndex;
                 this.wordIndex = wordIndex;
@@ -55,33 +57,39 @@ namespace Vocabulary
             results.Items.Clear();
             if (searchExpression.Text != "")
             {
-                for (int i = 0; i < Program.pages.Length; i++)
+                if (lookForPages.Checked)
                 {
-                    if (matchesSearchExression(Program.pages[i].name))
+                    for (int i = 0; i < Program.pages.Length; i++)
                     {
-                        results.Items.Add(Program.pages[i].name + " (Page)");
-                        addIndexInfo(new ResultIndexInfo(true, i, 0));
+                        if (matchesSearchExression(Program.pages[i].name))
+                        {
+                            results.Items.Add(Program.pages[i].name + " (Page)");
+                            addIndexInfo(new ResultIndexInfo(true, i, 0));
+                        }
                     }
                 }
-                for (int i = 0; i < Program.pages.Length; i++)
+                if (lookForWords.Checked)
                 {
-                    for (int j = 0; j < Program.pages[i].words.Length; j++)
+                    for (int i = 0; i < Program.pages.Length; i++)
                     {
-                        int czechWordIndex = 0;
-                        if (matchesSearchExression(Program.pages[i].words[j].inEnglish))
+                        for (int j = 0; j < Program.pages[i].words.Length; j++)
                         {
-                            results.Items.Add(Program.pages[i].words[j].inEnglish + " - " + Program.pages[i].words[j].inCzech[0] + " (" + Program.pages[i].name + ")");
-                            addIndexInfo(new ResultIndexInfo(true, i, j));
-                            czechWordIndex = 1;
-                        }
-                        while (czechWordIndex < Program.pages[i].words[j].inCzech.Length)
-                        {
-                            if (matchesSearchExression(Program.pages[i].words[j].inCzech[czechWordIndex]))
+                            int czechWordIndex = 0;
+                            if (matchesSearchExression(Program.pages[i].words[j].inEnglish))
                             {
-                                results.Items.Add(Program.pages[i].words[j].inEnglish + " - " + Program.pages[i].words[j].inCzech[czechWordIndex] + " (" + Program.pages[i].name + ")");
+                                results.Items.Add(Program.pages[i].words[j].inEnglish + " - " + Program.pages[i].words[j].inCzech[0] + " (" + Program.pages[i].name + ")");
                                 addIndexInfo(new ResultIndexInfo(true, i, j));
+                                czechWordIndex = 1;
                             }
-                            czechWordIndex++;
+                            while (czechWordIndex < Program.pages[i].words[j].inCzech.Length)
+                            {
+                                if (matchesSearchExression(Program.pages[i].words[j].inCzech[czechWordIndex]))
+                                {
+                                    results.Items.Add(Program.pages[i].words[j].inEnglish + " - " + Program.pages[i].words[j].inCzech[czechWordIndex] + " (" + Program.pages[i].name + ")");
+                                    addIndexInfo(new ResultIndexInfo(true, i, j));
+                                }
+                                czechWordIndex++;
+                            }
                         }
                     }
                 }
@@ -102,6 +110,16 @@ namespace Vocabulary
         }
 
         private void beCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            updateResults();
+        }
+
+        private void lookForPages_CheckedChanged(object sender, EventArgs e)
+        {
+            updateResults();
+        }
+
+        private void lookForWords_CheckedChanged(object sender, EventArgs e)
         {
             updateResults();
         }

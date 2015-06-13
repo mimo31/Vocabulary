@@ -9,7 +9,7 @@ namespace Vocabulary
     class Page
     {
 
-        public string name{get; set;}
+        public string name { get; set; }
         public Word[] words { get; private set; }
 
         public Page(string name)
@@ -25,7 +25,7 @@ namespace Vocabulary
 
         public void addWord(string[] inCzech, string inEnglish, string comment)
         {
-            this.addWord(new Word(inCzech , inEnglish, comment));
+            this.addWord(new Word(inCzech, inEnglish, comment));
         }
 
         public void addWord(Word word)
@@ -52,9 +52,9 @@ namespace Vocabulary
 
     class Word
     {
-        public string[] inCzech{get; set;}
-        public string inEnglish{get; set;}
-        public string comment{get; set;}
+        public string[] inCzech { get; set; }
+        public string inEnglish { get; set; }
+        public string comment { get; set; }
 
         public Word(string[] inCzech, string inEnglish, string comment)
         {
