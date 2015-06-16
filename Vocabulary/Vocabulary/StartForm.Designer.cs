@@ -54,6 +54,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -85,7 +86,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "StartForm";
-            this.Text = "Form1";
+            this.Text = "Vocabulary";
             this.ResumeLayout(false);
 
         }

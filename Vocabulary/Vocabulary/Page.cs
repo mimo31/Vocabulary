@@ -30,13 +30,30 @@ namespace Vocabulary
 
         public void addWord(Word word)
         {
+            int newWordIndex;
+            {
+                int i = 0;
+                while (i < words.Length)
+                {
+                    if (String.Compare(words[i].inEnglish, word.inEnglish) > 0)
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                newWordIndex = i;
+            }
             Word[] temp = new Word[words.Length + 1];
-            for (int i = 0; i < words.Length; i++)
+            for (int i = 0; i < newWordIndex; i++)
             {
                 temp[i] = words[i];
             }
-            temp[temp.Length - 1] = word;
-            this.words = temp;
+            temp[newWordIndex] = word;
+            for (int i = newWordIndex; i < words.Length; i++)
+            {
+                temp[newWordIndex + 1] = words[newWordIndex];
+            }
+            words = temp;
         }
 
         public byte[] toBytes()

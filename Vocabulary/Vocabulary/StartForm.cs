@@ -22,5 +22,11 @@ namespace Vocabulary
             SearchForm form = new SearchForm();
             form.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddForm form = new AddForm();
+            form.Show();
+        }
     }
 }
