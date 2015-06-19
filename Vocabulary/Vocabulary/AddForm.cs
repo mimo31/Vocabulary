@@ -10,28 +10,23 @@ using System.Windows.Forms;
 
 namespace Vocabulary
 {
-    public partial class StartForm : Form
+    public partial class AddForm : Form
     {
-        public StartForm()
+        public AddForm()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SearchForm form = new SearchForm();
+            AddPageForm form = new AddPageForm();
             form.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddForm form = new AddForm();
-            form.Show();
-        }
-
-        private void StartForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            IO.save();
+            AddWordForm form = new AddWordForm();
+            form.ShowDialog();
         }
     }
 }

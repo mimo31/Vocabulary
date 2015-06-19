@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.commentTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.keepCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -130,11 +131,22 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Comment:";
             // 
+            // keepCheckBox
+            // 
+            this.keepCheckBox.AutoSize = true;
+            this.keepCheckBox.Location = new System.Drawing.Point(13, 208);
+            this.keepCheckBox.Name = "keepCheckBox";
+            this.keepCheckBox.Size = new System.Drawing.Size(86, 17);
+            this.keepCheckBox.TabIndex = 10;
+            this.keepCheckBox.Text = "Keep adding";
+            this.keepCheckBox.UseVisualStyleBackColor = true;
+            // 
             // AddWordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 234);
+            this.Controls.Add(this.keepCheckBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.commentTextBox);
             this.Controls.Add(this.button1);
@@ -164,5 +176,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox commentTextBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox keepCheckBox;
     }
 }

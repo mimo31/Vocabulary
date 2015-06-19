@@ -87,6 +87,7 @@
             this.Controls.Add(this.button1);
             this.Name = "StartForm";
             this.Text = "Vocabulary";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartForm_FormClosing);
             this.ResumeLayout(false);
 
         }

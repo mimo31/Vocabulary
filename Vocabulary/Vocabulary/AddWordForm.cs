@@ -71,7 +71,16 @@ namespace Vocabulary
                 string EnglishExpression = removeWhiteSpace(EnglishTextBox.Text);
                 string comment = removeWhiteSpace(commentTextBox.Text);
                 Program.pages[pageIndex].addWord(CzechExpressions, EnglishExpression, comment);
-                this.Close();
+                if (keepCheckBox.Checked)
+                {
+                    EnglishTextBox.Text = "";
+                    CzechTextBox.Text = "";
+                    comment = "";
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             else
             {

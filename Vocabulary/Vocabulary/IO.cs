@@ -14,16 +14,24 @@ namespace Vocabulary
 
         public static void initializeData()
         {
-            if(Directory.Exists(parentDirectory)) {
-                string[] pageFiles = Directory.GetFiles(parentDirectory);
+            if(Directory.Exists(parentDirectory + "\\Pages")) {
+                string[] pageFiles = Directory.GetFiles(parentDirectory + "\\Pages");
                 foreach(string file in pageFiles) {
                     Program.addPage(new Page(File.ReadAllBytes(file)));
                 }
             }
             else
             {
-                Directory.CreateDirectory(parentDirectory);
+                Directory.CreateDirectory(parentDirectory + "\\Pages");
             }
+        }
+
+        public static void save()
+        {
+            foreach (Page page in Program.pages)
+            {
+                File.WriteAllBytes(parentDirectory + "\\Pages\\" + page.name + ".dat", page.Serialiaze());
+            }  
         }
     }
 }
